@@ -1,3 +1,0 @@
-C:/Users/Administrator/CLionProjects/HelloOpenGL/cmake-build-debug/CMakeFiles/HelloOpenGL.dir
-C:/Users/Administrator/CLionProjects/HelloOpenGL/cmake-build-debug/CMakeFiles/ALL_BUILD.dir
-C:/Users/Administrator/CLionProjects/HelloOpenGL/cmake-build-debug/CMakeFiles/ZERO_CHECK.dir
