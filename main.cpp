@@ -9,18 +9,17 @@
 #include <sstream>
 #include <string>
 
-#if defined(_DEBUG)
-#define ASSERT(x) if (!x) { __debugbreak(); }
-#else
-#define ASSERT(x)
-#endif
+#define ASSERT(x) if (!x) __debugbreak();
+#define GLCall(x) GLClearError(); \
+    x;                            \
+    ASSERT(GLLogCall());
 
 static void GLClearError()
 {
     while (glGetError() != GL_NO_ERROR);
 }
 
-static bool GLCheckError()
+static bool GLLogCall()
 {
     while (GLenum error = glGetError()) {
         std::cout << "[OpenGL Error]" << error << std::endl;
@@ -176,9 +175,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
 //        glDrawArrays(GL_TRIANGLES, 0, 6);
-        GLClearError();
-        glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr);
-        ASSERT(GLCheckError())
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr))
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
